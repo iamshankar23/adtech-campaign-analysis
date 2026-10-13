@@ -1,0 +1,138 @@
+
+==============================================================================
+Account KPIs
+Question: What are the overall CTR, CPC, CPM and cost per sale?
+------------------------------------------------------------------------------
+ ads  impressions  clicks    spend  enquiries  sales  ctr_pct   cpc   cpm  cost_per_sale
+1143    213434828   38165 58705.23       3264   1079   0.0179 1.538 0.275          54.41
+
+==============================================================================
+Performance by campaign
+Question: Which campaign is the most cost-efficient per sale, and where does the money go?
+------------------------------------------------------------------------------
+campaign_id  ads    spend  spend_share_pct  sales  sales_share_pct  ctr_pct   cpc  cost_per_sale
+       1178  625 55662.15             94.8    872             80.8   0.0176 1.543          63.83
+        936  464  2893.37              4.9    183             17.0   0.0244 1.458          15.81
+        916   54   149.71              0.3     24              2.2   0.0234 1.325           6.24
+
+==============================================================================
+Spend share vs sales share by age and gender  (Q1)
+Question: Which segments take a big share of spend but give a smaller share of sales?
+------------------------------------------------------------------------------
+  age gender    spend  spend_share_pct  sales  sales_share_pct  gap_pts  cost_per_sale
+45-49      F 13433.21             22.9    112             10.4     12.5         119.94
+40-44      F  7396.58             12.6     93              8.6      4.0          79.53
+45-49      M  7317.46             12.5     96              8.9      3.6          76.22
+35-39      F  6061.35             10.3     95              8.8      1.5          63.80
+40-44      M  4193.15              7.1     77              7.1      0.0          54.46
+35-39      M  5051.08              8.6    112             10.4     -1.8          45.10
+30-34      F  7611.48             13.0    195             18.1     -5.1          39.03
+30-34      M  7640.92             13.0    299             27.7    -14.7          25.55
+
+==============================================================================
+Spend on ads with zero sales  (Q2)
+Question: How much money went to ads that produced no sales?
+------------------------------------------------------------------------------
+ ad_group  ads  ads_share_pct    spend  spend_share_pct
+Had sales  584           51.1 43950.81             74.9
+ No sales  559           48.9 14754.42             25.1
+
+==============================================================================
+Enquiry-to-sale rate by age and gender  (Q4)
+Question: Which segments turn enquiries into sales, and which do not?
+------------------------------------------------------------------------------
+  age gender  enquiries  sales  enquiry_to_sale_pct  click_to_enquiry_pct
+40-44      M        201     77                 38.3                   7.9
+30-34      M        812    299                 36.8                  18.5
+35-39      M        322    112                 34.8                  11.0
+45-49      M        285     96                 33.7                   6.5
+30-34      F        619    195                 31.5                  12.1
+35-39      F        304     95                 31.3                   7.3
+40-44      F        322     93                 28.9                   6.2
+45-49      F        399    112                 28.1                   4.2
+
+==============================================================================
+Funnel with drop-off (CTE + LAG)
+Question: Where is the biggest drop-off: impression, click, enquiry or sale?
+------------------------------------------------------------------------------
+      stage     value  pct_of_previous_stage
+Impressions 213434828                    NaN
+     Clicks     38165                 0.0179
+  Enquiries      3264                 8.5523
+      Sales      1079                33.0576
+
+==============================================================================
+CTR quartiles vs cost per sale (NTILE)  (Q3)
+Question: Does a higher CTR mean cheaper sales?
+------------------------------------------------------------------------------
+ ctr_band  ads  min_ctr  max_ctr    spend  sales  cost_per_sale  click_to_enquiry_pct
+        1  234   0.0031   0.0137  9498.44    317          29.96                  15.8
+        2  234   0.0137   0.0182 18626.22    315          59.13                   8.4
+        3  234   0.0182   0.0247 19879.01    247          80.48                   5.8
+        4  234   0.0248   0.1059 10701.56    124          86.30                   5.5
+
+==============================================================================
+Budget concentration by interest code (running total)  (Q5)
+Question: How concentrated is the budget in a few interest codes?
+------------------------------------------------------------------------------
+ interest   spend  sales  cost_per_sale  spend_share_pct  cumulative_spend_pct
+       16 8084.91    141          57.34             13.8                  13.8
+       27 5176.17     54          95.86              8.8                  22.6
+       10 5086.38     91          55.89              8.7                  31.3
+       29 5045.19    132          38.22              8.6                  39.8
+       28 3205.85     42          76.33              5.5                  45.3
+       15 2597.26     63          41.23              4.4                  49.7
+       63 2484.06     34          73.06              4.2                  54.0
+       18 2425.07     33          73.49              4.1                  58.1
+       32 1970.53     35          56.30              3.4                  61.5
+       20 1960.77     47          41.72              3.3                  64.8
+       19 1940.36     33          58.80              3.3                  68.1
+       25 1603.86     19          84.41              2.7                  70.8
+       26 1591.77     23          69.21              2.7                  73.5
+       64 1486.13     27          55.04              2.5                  76.1
+       22 1039.86     12          86.65              1.8                  77.8
+
+==============================================================================
+Best and worst interest codes by cost per sale (RANK)  (Q5)
+Question: Which interest codes give the cheapest and the most expensive sales (spend of at least 500)?
+------------------------------------------------------------------------------
+    group_name  interest   spend  sales  cost_per_sale
+      Cheapest         2  503.45     19          26.50
+      Cheapest        65  542.01     19          28.53
+      Cheapest       101  757.69     25          30.31
+      Cheapest        21  824.21     27          30.53
+      Cheapest         7  648.93     19          34.15
+Most expensive        23  595.65      7          85.09
+Most expensive        22 1039.86     12          86.65
+Most expensive        27 5176.17     54          95.86
+Most expensive       109  815.82      8         101.98
+Most expensive       105  647.80      6         107.97
+
+==============================================================================
+Efficiency index by segment (spend and sales vs account average)
+Question: How much more or less expensive is each segment than the account average?
+------------------------------------------------------------------------------
+  age gender    spend  sales  cost_per_sale  index_vs_average
+45-49      F 13433.21    112         119.94              2.20
+40-44      F  7396.58     93          79.53              1.46
+45-49      M  7317.46     96          76.22              1.40
+35-39      F  6061.35     95          63.80              1.17
+40-44      M  4193.15     77          54.46              1.00
+35-39      M  5051.08    112          45.10              0.83
+30-34      F  7611.48    195          39.03              0.72
+30-34      M  7640.92    299          25.55              0.47
+
+==============================================================================
+Biggest zero-sale ads in each campaign (ROW_NUMBER)  (Q2)
+Question: Which individual ads wasted the most money, per campaign?
+------------------------------------------------------------------------------
+campaign_id  rank_in_campaign   ad_id   age gender  interest  spend  clicks  enquiries
+       1178                 1 1122265 45-49      F        27 541.70     367         10
+       1178                 2 1122304 45-49      F        63 402.30     282          5
+       1178                 3 1122112 40-44      F        27 390.26     276         11
+        916                 1  710045 45-49      M        16  15.82      12          1
+        916                 2  711877 45-49      F        63   9.38       7          1
+        916                 3  710623 30-34      F        16   9.22       7          1
+        936                 1  776325 45-49      F        16 180.22     114          1
+        936                 2  776489 45-49      F        26  81.61      55          1
+        936                 3  780318 45-49      F        29  77.08      56          3
